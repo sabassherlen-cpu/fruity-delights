@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fruity Delights - Sweet Jelly Candies</title>
+    <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --strawberry: #FFB6C1;
+            --orange: #FFDAB9;
+            --grape: #C8A2C8;
+            --berry: #B3E5FC;
+            --pineapple: #FFF59D;
+            --fourseasons: #FF8A80;
+            --mango: #A5D6A7;
+            --white: #ffffff;
+            --text: #5a4a4a;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Baloo 2', cursive;
+        }
+        
+        body {
+            background: linear-gradient(135deg, var(--strawberry), var(--orange), var(--mango));
+            color: var(--text);
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header Styles */
+        header {
+            background-color: rgba(255, 255, 255, 0.9);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            backdrop-filter: blur(10px);
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .logo h1 {
+            font-size: 2rem;
+            color: var(--fourseasons);
+            text-shadow: 2px 2px 0px rgba(255, 255, 255, 0.8);
+        }
+        
+        .logo-icon {
+            font-size: 2.5rem;
+            color: var(--fourseasons);
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+        
+        nav a {
+            text-decoration: none;
+            color: var(--text);
+            font-weight: 600;
+            font-size: 1.1rem;
+            padding: 8px 15px;
+            border-radius: 30px;
+            transition: all 0.3s ease;
+        }
+        
+        nav a:hover {
+            background-color: var(--strawberry);
+            color: white;
+        }
+        
+        /* Hero Section */
+        .hero {
+            padding: 80px 0;
+            text-align: center;
+            background: linear-gradient(135deg, var(--strawberry), var(--orange), var(--mango));
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M0,0 L100,0 L100,100 Z" fill="rgba(255,255,255,0.1)"/></svg>');
+            background-size: cover;
+        }
+        
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .hero h2 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            color: white;
+            text-shadow: 2px 2px 0px rgba(0, 0, 0, 0.1);
+        }
+        
+        .hero p {
+            font-size: 1.5rem;
+            margin-bottom: 30px;
+            color: white;
+            text-shadow: 1px 1px 0px rgba(0, 0, 0, 0.1);
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: white;
+            color: var(--fourseasons);
+            padding: 12px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.2rem;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+        }
+        
+        /* Flavors Section */
+        .section {
+            padding: 80px 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+            font-size: 2.5rem;
+            color: white;
+            text-shadow: 2px 2px 0px rgba(0, 0, 0, 0.1);
+        }
+        
+        .flavors-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+        
+        .flavor-card {
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 20px;
+            padding: 30px 20px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .flavor-card::before {
+            content: "";
+            position: absolute;
+            top: -10px;
+            left: -10px;
+            right: -10px;
+            bottom: -10px;
+            z-index: -1;
+            border-radius: 30px;
+            opacity: 0.7;
+        }
+        
+        .flavor-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+        }
+        
+        .flavor-icon {
+            font-size: 3rem;
+            margin-bottom: 15px;
+        }
+        
+        .flavor-card h3 {
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+        }
+        
+        /* Prices Section */
+        .prices-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 25px;
+        }
+        
+        .price-card {
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 20px;
+            padding: 30px 20px;
+            text-align: center;
+            width: 180px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .price-card::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 10px;
+        }
+        
+        .price-card:hover {
+            transform: scale(1.05);
+        }
+        
+        .price {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin: 15px 0;
+        }
+        
+        /* About Section */
+        .about-content {
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 30px;
+            padding: 50px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .about-content::before {
+            content: "";
+            position: absolute;
+            top: -50px;
+            right: -50px;
+            width: 200px;
+            height: 200px;
+            background: linear-gradient(135deg, var(--strawberry), var(--orange));
+            border-radius: 50%;
+            opacity: 0.2;
+        }
+        
+        .about-content::after {
+            content: "";
+            position: absolute;
+            bottom: -80px;
+            left: -80px;
+            width: 250px;
+            height: 250px;
+            background: linear-gradient(135deg, var(--mango), var(--berry));
+            border-radius: 50%;
+            opacity: 0.2;
+        }
+        
+        .about-content h3 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            color: var(--fourseasons);
+        }
+        
+        .about-content p {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 50px 0 20px;
+            box-shadow: 0 -5px 20px rgba(0, 0, 0, 0.05);
+        }
+        
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 30px;
+        }
+        
+        .social-icons {
+            display: flex;
+            gap: 20px;
+        }
+        
+        .social-icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            font-size: 1.5rem;
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        .social-icon:hover {
+            transform: translateY(-5px);
+        }
+        
+        .copyright {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 0.9rem;
+            color: var(--text);
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .header-container {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            nav ul {
+                gap: 15px;
+            }
+            
+            .hero h2 {
+                font-size: 2.5rem;
+            }
+            
+            .hero p {
+                font-size: 1.2rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .about-content {
+                padding: 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <span class="logo-icon">🍬</span>
+                <h1>Fruity Delights</h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#flavors">Flavors</a></li>
+                    <li><a href="#prices">Prices</a></li>
+                    <li><a href="#about">About Us</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container hero-content">
+            <h2>Sweet. Soft. Fruity Delights.</h2>
+            <p>Indulge in our delicious, fruity jelly candies that melt in your mouth!</p>
+            <a href="#flavors" class="btn">Explore Flavors</a>
+        </div>
+    </section>
+
+    <!-- Flavors Section -->
+    <section class="section" id="flavors" style="background: linear-gradient(135deg, var(--berry), var(--grape), var(--pineapple));">
+        <div class="container">
+            <h2 class="section-title">Our Delicious Flavors</h2>
+            <div class="flavors-grid">
+                <!-- Strawberry -->
+                <div class="flavor-card" style="--flavor-color: var(--strawberry);">
+                    <div class="flavor-icon">🍓</div>
+                    <h3>Strawberry</h3>
+                    <p>Sweet and tangy strawberry flavor</p>
+                </div>
+                
+                <!-- Orange -->
+                <div class="flavor-card" style="--flavor-color: var(--orange);">
+                    <div class="flavor-icon">🍊</div>
+                    <h3>Orange</h3>
+                    <p>Zesty and refreshing orange burst</p>
+                </div>
+                
+                <!-- Grapes -->
+                <div class="flavor-card" style="--flavor-color: var(--grape);">
+                    <div class="flavor-icon">🍇</div>
+                    <h3>Grapes</h3>
+                    <p>Sweet and juicy grape delight</p>
+                </div>
+                
+                <!-- Mixed Berries -->
+                <div class="flavor-card" style="--flavor-color: var(--berry);">
+                    <div class="flavor-icon">🍓🫐</div>
+                    <h3>Mixed Berries</h3>
+                    <p>A mix of delicious berry flavors</p>
+                </div>
+                
+                <!-- Pineapple -->
+                <div class="flavor-card" style="--flavor-color: var(--pineapple);">
+                    <div class="flavor-icon">🍍</div>
+                    <h3>Pineapple</h3>
+                    <p>Tropical pineapple sweetness</p>
+                </div>
+                
+                <!-- Four Seasons -->
+                <div class="flavor-card" style="--flavor-color: var(--fourseasons);">
+                    <div class="flavor-icon">🍉🍍🥭🍊</div>
+                    <h3>Four Seasons</h3>
+                    <p>A delightful mix of four fruits</p>
+                </div>
+                
+                <!-- Mango -->
+                <div class="flavor-card" style="--flavor-color: var(--mango);">
+                    <div class="flavor-icon">🥭</div>
+                    <h3>Mango</h3>
+                    <p>Sweet and tropical mango flavor</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Prices Section -->
+    <section class="section" id="prices" style="background: linear-gradient(135deg, var(--orange), var(--fourseasons), var(--strawberry));">
+        <div class="container">
+            <h2 class="section-title">Our Sweet Prices</h2>
+            <div class="prices-container">
+                <!-- 3 pieces -->
+                <div class="price-card" style="--price-color: var(--strawberry);">
+                    <h3>3 Pieces</h3>
+                    <div class="price">₱5</div>
+                    <p>Perfect for a quick treat</p>
+                </div>
+                
+                <!-- 10 pieces -->
+                <div class="price-card" style="--price-color: var(--orange);">
+                    <h3>10 Pieces</h3>
+                    <div class="price">₱15</div>
+                    <p>Great for sharing</p>
+                </div>
+                
+                <!-- 20 pieces -->
+                <div class="price-card" style="--price-color: var(--mango);">
+                    <h3>20 Pieces</h3>
+                    <div class="price">₱30</div>
+                    <p>Ideal for parties</p>
+                </div>
+                
+                <!-- 31 pieces -->
+                <div class="price-card" style="--price-color: var(--berry);">
+                    <h3>31 Pieces</h3>
+                    <div class="price">₱50</div>
+                    <p>Extra special deal</p>
+                </div>
+                
+                <!-- Tub -->
+                <div class="price-card" style="--price-color: var(--grape);">
+                    <h3>Tub</h3>
+                    <div class="price">₱85</div>
+                    <p>Maximum fruity delight</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="section" id="about" style="background: linear-gradient(135deg, var(--mango), var(--pineapple), var(--berry));">
+        <div class="container">
+            <h2 class="section-title">Our Sweet Story</h2>
+            <div class="about-content">
+                <h3>Welcome to Fruity Delights!</h3>
+                <p>At Fruity Delights, we believe that happiness comes in small, fruity packages. Our journey began with a simple love for sweet, chewy candies that bring smiles to faces of all ages.</p>
+                <p>We carefully craft each jelly candy using the finest ingredients to ensure that every bite is bursting with fruity flavor. From our tangy strawberry to our tropical mango, each flavor is designed to transport you to a world of sweetness and joy.</p>
+                <p>Our mission is to spread happiness one jelly candy at a time. Whether you're treating yourself or sharing with friends, Fruity Delights is here to make your day a little sweeter.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="social-icons">
+                    <a href="https://www.facebook.com/profile.php?id=61582479966069" class="social-icon" style="background-color: #1877F2;">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a href="https://www.tiktok.com/@fruity_delights?_t=ZS-90yaDLBbcos&_r=1" class="social-icon" style="background-color: #C8A2C8;">
+                        <i class="fab fa-tiktok"></i>
+                    </a>
+                    <a href="https://www.instagram.com/fruitydelightssss" class="social-icon" style="background-color: #E4405F;">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                </div>
+                <div class="copyright">
+                    © 2025 Fruity Delights, All Rights Reserved.
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Add some interactive effects
+        document.addEventListener('DOMContentLoaded', function() {
+            // Add hover effect to flavor cards
+            const flavorCards = document.querySelectorAll('.flavor-card');
+            flavorCards.forEach(card => {
+                const color = getComputedStyle(card).getPropertyValue('--flavor-color');
+                card.style.setProperty('--flavor-color', color);
+                card.addEventListener('mouseenter', function() {
+                    this.style.backgroundColor = color;
+                    this.style.color = 'white';
+                });
+                card.addEventListener('mouseleave', function() {
+                    this.style.backgroundColor = 'rgba(255, 255, 255, 0.9)';
+                    this.style.color = '';
+                });
+            });
+            
+            // Add hover effect to price cards
+            const priceCards = document.querySelectorAll('.price-card');
+            priceCards.forEach(card => {
+                const color = getComputedStyle(card).getPropertyValue('--price-color');
+                card.style.setProperty('--price-color', color);
+                card.querySelector('.price-card::before').style.backgroundColor = color;
+                
+                card.addEventListener('mouseenter', function() {
+                    this.style.backgroundColor = color;
+                    this.style.color = 'white';
+                });
+                card.addEventListener('mouseleave', function() {
+                    this.style.backgroundColor = 'rgba(255, 255, 255, 0.9)';
+                    this.style.color = '';
+                });
+            });
+        });
+    </script>
+</body>
+</html>
